@@ -1,0 +1,40 @@
+﻿<Window
+    x:Class="ZaverecnyProjekt.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ZaverecnyProjekt"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="window"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <StackPanel >
+        <StackPanel
+            HorizontalAlignment="Left"
+            x:Name="topStackPanel"
+            Width="800"
+            Height="30"
+            Orientation="Horizontal">
+            <Label Content="Aplikace" />
+            
+            <Button
+                x:Name="mainButton"
+                Width="100"
+                Margin="10,4"
+                Click="mainButton_Click"
+                Content="Button" />
+        </StackPanel>
+
+        <Grid>
+            <Canvas
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                x:Name="myCanvas"
+                Height="403"
+                Background="LightBlue" />
+        </Grid>
+
+    </StackPanel>
+</Window>

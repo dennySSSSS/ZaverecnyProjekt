@@ -31,13 +31,29 @@ namespace ZaverecnyProjekt
         protected Random random = new Random();
         public int Height { get; private set; }
         public int Width { get; private set; }
-
-        public Direction[,] Generate(Direction[,] grid)
+        
+        /// <summary>
+        /// Generates a maze with set height and width.
+        /// </summary>
+        /// <param name="height">Height of the maze.</param>
+        /// <param name="width">Width of the maze.</param>
+        /// <returns>Maze array.</returns>
+        public Direction[,] Generate(int height, int width)
         {
+            Direction[,] grid = new Direction[height, width];
+            for (int i = 0; i < height; i++)
+            {
+                for (int j = 0; j < width; j++)
+                {
+                    grid[i, j] = AllDirections;
+                }
+            }
+
             Height = grid.GetLength(0);
             Width = grid.GetLength(1);
 
             Coordinate start = FindStart(grid);
+            //Coordinate start = new Coordinate(3, 5);
             Coordinate end = FindEnd(grid);
 
             grid = MoveFrom(start.Y, start.X, grid);
@@ -80,10 +96,10 @@ namespace ZaverecnyProjekt
         {
             var directions = GetDirections();
 
-            foreach (var direction in directions)
+            foreach (Direction direction in directions)
             {
-                var newCol = col + DX[direction];
-                var newRow = row + DY[direction];
+                int newCol = col + DX[direction];
+                int newRow = row + DY[direction];
 
                 if (IsAvailable(grid, newCol, newRow))
                 {

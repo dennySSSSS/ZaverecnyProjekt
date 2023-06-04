@@ -8,7 +8,7 @@
     x:Name="window"
     Title="MainWindow"
     Width="1000"
-    Height="600"
+    Height="1000"
     mc:Ignorable="d">
     <StackPanel>
         <StackPanel
@@ -36,23 +36,8 @@
             <Canvas
                 x:Name="myCanvas"
                 Grid.Row="0"
-                Height="450"
+                Height="800"
                 Background="LightBlue">
-
-                <!--<Rectangle
-                    Width="50"
-                    Height="50"
-                    Fill="Red"
-                    RenderTransformOrigin="0.5,0.5">
-                    <Rectangle.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform />
-                            <SkewTransform />
-                            <RotateTransform />
-                            <TranslateTransform X="50" Y="100" />
-                        </TransformGroup>
-                    </Rectangle.RenderTransform>
-                </Rectangle>-->
             </Canvas>
             <RichTextBox x:Name="debugTextBox" Grid.Row="1" />
         </Grid>

@@ -39,7 +39,7 @@
                 Height="800"
                 Background="LightBlue">
             </Canvas>
-            <RichTextBox x:Name="debugTextBox" Grid.Row="1" />
+            <RichTextBox x:Name="debugTextBox" Grid.Row="1" Visibility="Hidden"/>
         </Grid>
 
     </StackPanel>

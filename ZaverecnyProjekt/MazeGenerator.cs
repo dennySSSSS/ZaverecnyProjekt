@@ -31,7 +31,7 @@ namespace ZaverecnyProjekt
         protected Random random = new Random();
         public int Height { get; private set; }
         public int Width { get; private set; }
-        
+
         /// <summary>
         /// Generates a maze with set height and width.
         /// </summary>

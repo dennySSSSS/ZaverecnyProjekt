@@ -30,7 +30,8 @@
                 Width="120"
                 Margin="10,4"
                 Click="solveButton_Click"
-                Content="Ukázat cestu"/>
+                Content="Ukázat cestu"
+                IsEnabled="False"/>
         </StackPanel>
 
         <Grid>

@@ -19,5 +19,10 @@ namespace ZaverecnyProjekt
 
             renderer.DrawMaze(mazeGenerator.Generate(15, 10), renderSettings);
         }
+
+        private void solveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

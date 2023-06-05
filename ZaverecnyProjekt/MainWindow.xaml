@@ -21,10 +21,16 @@
 
             <Button
                 x:Name="mainButton"
-                Width="100"
+                Width="120"
                 Margin="10,4"
                 Click="mainButton_Click"
-                Content="Button" />
+                Content="Vygeneruj bludiště" />
+            <Button
+                x:Name="solveButton"
+                Width="120"
+                Margin="10,4"
+                Click="solveButton_Click"
+                Content="Ukázat cestu"/>
         </StackPanel>
 
         <Grid>

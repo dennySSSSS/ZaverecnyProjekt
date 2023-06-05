@@ -9,6 +9,7 @@ namespace ZaverecnyProjekt
             InitializeComponent();
         }
 
+        Direction[,] grid;
         private void mainButton_Click(object sender, RoutedEventArgs e)
         {
             myCanvas.Children.Clear();
@@ -17,12 +18,14 @@ namespace ZaverecnyProjekt
             MazeRenderer renderer = new MazeRenderer(myCanvas);
             RenderSettings renderSettings = new RenderSettings();
 
-            renderer.DrawMaze(mazeGenerator.Generate(15, 10), renderSettings);
+            grid = mazeGenerator.Generate(15, 10);
+            renderer.DrawMaze(grid, renderSettings);
         }
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MazeSolver mazeSolver = new MazeSolver(grid);
+            mazeSolver.ShowPath();
         }
     }
 }

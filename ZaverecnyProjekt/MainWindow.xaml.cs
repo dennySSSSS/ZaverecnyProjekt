@@ -29,8 +29,10 @@ namespace ZaverecnyProjekt
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
-            MazeSolver mazeSolver = new MazeSolver(grid, renderSettings);
-            mazeSolver.ShowPath();
+            MazeSolver mazeSolver = new MazeSolver();
+
+            renderer.DrawPath(mazeSolver.FindPath(grid), renderSettings);
+            //mazeSolver.ShowPath();
         }
     }
 }

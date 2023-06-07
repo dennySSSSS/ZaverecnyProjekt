@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -36,6 +37,14 @@ namespace ZaverecnyProjekt
 
             return true;
         }
+
+        public bool DrawPath(Stack<Coordinate> stack, RenderSettings settings)
+        {
+
+
+            return true;
+        }
+
 
         /// <summary>
         /// Nakreslí stěny jednotlivých buněk

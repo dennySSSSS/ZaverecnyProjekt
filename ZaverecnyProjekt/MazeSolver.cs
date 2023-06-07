@@ -10,16 +10,8 @@ namespace ZaverecnyProjekt
     internal class MazeSolver
     {
         Stack<Coordinate> stack = new Stack<Coordinate>();
-        Direction[,] grid;
-        RenderSettings renderSettings;
 
-        public MazeSolver(Direction[,] grid, RenderSettings renderSettings)
-        {
-            this.grid = grid;
-            this.renderSettings = renderSettings;
-        }
-
-        public Stack<Coordinate> ShowPath()
+        public Stack<Coordinate> FindPath(Direction[,] grid)
         {
             stack.Push(new Coordinate(0, 0));
 
@@ -45,6 +37,8 @@ namespace ZaverecnyProjekt
                     }
                 }
             }
+
+
             return stack;
         }
 

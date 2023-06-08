@@ -10,6 +10,6 @@ namespace ZaverecnyProjekt
             S = 1 << 2,
             E = 1 << 3,
             W = 1 << 4,
-            F = 1 << 5
+            VISITED = 1 << 5
         }
 }

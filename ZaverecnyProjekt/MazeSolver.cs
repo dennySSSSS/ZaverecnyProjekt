@@ -1,45 +1,78 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Windows.Media.Media3D;
 
 namespace ZaverecnyProjekt
 {
     internal class MazeSolver
     {
         Stack<Coordinate> stack = new Stack<Coordinate>();
+        Coordinate startPoint = new Coordinate();
+        //Coordinate currentPoint = new Coordinate();
+        Coordinate endPoint = new Coordinate(0, 0);
+        public int mazeHeight;
+        public int mazeWidth;
+        
 
         public Stack<Coordinate> FindPath(Direction[,] grid)
         {
-            stack.Push(new Coordinate(0, 0));
+            mazeHeight = grid.GetLength(0);
+            mazeWidth = grid.GetLength(1);
 
-            for (int i = 0; i < grid.GetLength(0); i++)
+            startPoint = new Coordinate(0, 0);
+            endPoint = new Coordinate(mazeHeight - 1, mazeWidth - 1);
+
+            bool FoundPath = Move(grid, startPoint, endPoint, stack);
+
+            if (FoundPath) return stack;
+            else return null;
+
+        }
+
+        private bool Move(Direction[,] grid, Coordinate currentPoint, Coordinate endPoint, Stack<Coordinate> stack)
+        {
+            if (currentPoint.Equals(endPoint))
             {
-                for (int j = 0; j < grid.GetLength(1); j++)
+                stack.Push(currentPoint);
+                return true;
+            }
+
+            // Nechá původní vlajky a přidá VISITED
+            grid[currentPoint.X, currentPoint.Y] |= Direction.VISITED;
+
+            foreach(Coordinate neighbor in GetNeighbors(currentPoint))
+            {
+                if (!grid[neighbor.X, neighbor.Y].HasFlag(Direction.VISITED))
                 {
-                    if (!grid[i, j].HasFlag(Direction.S))
+                    if(Move(grid, neighbor, endPoint, stack))
                     {
-                        stack.Push(new Coordinate(i++, j));
-                    }
-                    if (!grid[i, j].HasFlag(Direction.E))
-                    {
-                        stack.Push(new Coordinate(i, j++));
-                    }
-                    if(!grid[i, j].HasFlag(Direction.N))
-                    {
-                        stack.Push(new Coordinate(i--, j));
-                    }
-                    if (!grid[i, j].HasFlag(Direction.W))
-                    {
-                        stack.Push(new Coordinate(i, j--));
+                        stack.Push(currentPoint);
+                        return true;
                     }
                 }
             }
+            grid[currentPoint.X, currentPoint.Y] &= ~Direction.VISITED;
+            return false;
+        }
 
+        private List<Coordinate> GetNeighbors(Coordinate coordinate)
+        {
+            List<Coordinate> neighbors = new List<Coordinate>();
 
-            return stack;
+            // Získání souřadnic sousedů
+            int x = coordinate.X;
+            int y = coordinate.Y;
+
+            // Přidáme sousední souřadnice pouze pokud jsou v platném rozsahu pole
+            if (x + 1 < mazeWidth)
+                neighbors.Add(new Coordinate(x + 1, y)); // Např. pravo
+            if (x - 1 >= 0)
+                neighbors.Add(new Coordinate(x - 1, y)); // Např. levo
+            if (y + 1 < mazeHeight)
+                neighbors.Add(new Coordinate(x, y + 1)); // Např. nahoru
+            if (y - 1 >= 0)
+                neighbors.Add(new Coordinate(x, y - 1)); // Např. dolu
+
+            return neighbors;
         }
 
     }

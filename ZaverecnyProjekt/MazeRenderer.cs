@@ -41,7 +41,6 @@ namespace ZaverecnyProjekt
         public bool DrawPath(Stack<Coordinate> stack, RenderSettings settings)
         {
 
-            //stack.Peek();
 
             return true;
         }

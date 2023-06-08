@@ -23,7 +23,7 @@ namespace ZaverecnyProjekt
             renderer = new MazeRenderer(myCanvas);
             renderSettings = new RenderSettings();
 
-            grid = mazeGenerator.Generate(15, 10);
+            grid = mazeGenerator.Generate(5, 5);
             renderer.DrawMaze(grid, renderSettings);
         }
 
@@ -32,7 +32,6 @@ namespace ZaverecnyProjekt
             MazeSolver mazeSolver = new MazeSolver();
 
             renderer.DrawPath(mazeSolver.FindPath(grid), renderSettings);
-            //mazeSolver.ShowPath();
         }
     }
 }

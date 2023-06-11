@@ -25,13 +25,6 @@
                 Margin="10,4"
                 Click="mainButton_Click"
                 Content="Vygeneruj bludiště" />
-            <Button
-                x:Name="solveButton"
-                Width="120"
-                Margin="10,4"
-                Click="solveButton_Click"
-                Content="Ukázat cestu"
-                IsEnabled="False"/>
         </StackPanel>
 
         <Grid>
@@ -44,9 +37,11 @@
                 x:Name="myCanvas"
                 Grid.Row="0"
                 Height="800"
-                Background="LightBlue">
-            </Canvas>
-            <RichTextBox x:Name="debugTextBox" Grid.Row="1" Visibility="Hidden"/>
+                Background="LightBlue" />
+            <RichTextBox
+                x:Name="debugTextBox"
+                Grid.Row="1"
+                Visibility="Hidden" />
         </Grid>
 
     </StackPanel>

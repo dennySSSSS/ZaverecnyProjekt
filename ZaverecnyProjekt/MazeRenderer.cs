@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -14,8 +13,6 @@ namespace ZaverecnyProjekt
         {
             myCanvas = canvas; // Uložení odkazu na myCanvas do členské proměnné
         }
-        Stack<Coordinate> stack;
-
 
         /// <summary>
         /// Funkce která vykreslí bludiště.
@@ -35,20 +32,8 @@ namespace ZaverecnyProjekt
                     DrawCell(grid, row, col, settings);
                 }
             }
-
             return true;
         }
-
-        public bool DrawPath(Direction[,] grid, Stack<Coordinate> stack, RenderSettings settings)
-        {
-            settings.FillBackGround = true;
-            this.stack = stack;
-            //foreach(Coordinate e in stack){}
-
-            
-            return true;
-        }
-
 
         /// <summary>
         /// Nakreslí stěny jednotlivých buněk
@@ -68,7 +53,7 @@ namespace ZaverecnyProjekt
             int xOffset = col * cellSize + settings.WallWidth / 2 + cellSize;
             int yOffset = row * cellSize + settings.WallWidth / 2 + cellSize;
 
-            if (grid[row, col].HasFlag(Direction.VISITED))
+            if (settings.FillBackGround)
                 drawSquare(xOffset, yOffset, cellSize, CellBrush);
 
             if (grid[row, col].HasFlag(Direction.N))
@@ -83,7 +68,6 @@ namespace ZaverecnyProjekt
             if (grid[row, col].HasFlag(Direction.W))
                 DrawLine(new Point(xOffset, yOffset), new Point(xOffset, yOffset + cellSize), WallBrush.Color, wallWidth);
         }
-
 
         private void drawSquare(int x, int y, int squareSize, Brush brush)
         {
@@ -100,7 +84,6 @@ namespace ZaverecnyProjekt
 
             myCanvas.Children.Add(rect);
         }
-
 
         private void DrawLine(Point startPoint, Point endPoint, Color color, double thickness)
         {

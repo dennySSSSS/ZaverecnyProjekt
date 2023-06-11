@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 
 namespace ZaverecnyProjekt
@@ -11,7 +13,12 @@ namespace ZaverecnyProjekt
         Coordinate endPoint = new Coordinate(0, 0);
         public int mazeHeight;
         public int mazeWidth;
-        
+        RichTextBox debugTextBox;
+        public MazeSolver(RichTextBox debugTextBox)
+        {
+            this.debugTextBox = debugTextBox;
+            debugTextBox.Visibility = Visibility.Visible;
+        }
 
         public Stack<Coordinate> FindPath(Direction[,] grid)
         {
@@ -25,7 +32,6 @@ namespace ZaverecnyProjekt
 
             if (FoundPath) return stack;
             else return null;
-
         }
 
         private bool Move(Direction[,] grid, Coordinate currentPoint, Coordinate endPoint, Stack<Coordinate> stack)
@@ -33,6 +39,8 @@ namespace ZaverecnyProjekt
             if (currentPoint.Equals(endPoint))
             {
                 stack.Push(currentPoint);
+                
+                debugTextBox.AppendText(stack.Peek().X.ToString() + ", " + stack.Peek().Y.ToString() + "\n");
                 return true;
             }
 
@@ -46,11 +54,13 @@ namespace ZaverecnyProjekt
                     if(Move(grid, neighbor, endPoint, stack))
                     {
                         stack.Push(currentPoint);
+                        debugTextBox.AppendText(stack.Peek().X.ToString() + ", " + stack.Peek().Y.ToString() + "\n");
                         return true;
                     }
                 }
             }
             grid[currentPoint.X, currentPoint.Y] &= ~Direction.VISITED;
+            stack.Pop();
             return false;
         }
 

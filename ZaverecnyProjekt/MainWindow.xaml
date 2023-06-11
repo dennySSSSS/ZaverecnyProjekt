@@ -8,16 +8,20 @@
     x:Name="window"
     Title="MainWindow"
     Width="1000"
-    Height="1000"
-    mc:Ignorable="d">
+    Height="870"
+    mc:Ignorable="d"
+    ResizeMode="CanMinimize">
     <StackPanel>
         <StackPanel
             x:Name="topStackPanel"
-            Width="800"
+            Width="1000"
             Height="30"
             HorizontalAlignment="Left"
             Orientation="Horizontal">
-            <Label Content="Aplikace" />
+            <Label
+                VerticalAlignment="Center"
+                Content="Generátor bludiště"
+                FontSize="17" />
 
             <Button
                 x:Name="mainButton"
@@ -25,6 +29,44 @@
                 Margin="10,4"
                 Click="mainButton_Click"
                 Content="Vygeneruj bludiště" />
+            <Label
+                VerticalAlignment="Center"
+                Content="Šířka: "
+                FontSize="15" />
+            <Label
+                x:Name="LabelWidth"
+                Width="30"
+                VerticalAlignment="Center"
+                Content="{Binding ElementName=SliderWidth, Path=Value}"
+                FontSize="15" />
+            <Slider
+                x:Name="SliderWidth"
+                Width="250"
+                VerticalAlignment="Center"
+                IsSnapToTickEnabled="True"
+                Maximum="30"
+                Minimum="4"
+                TickFrequency="1"
+                Value="5" />
+            <Label
+                VerticalAlignment="Center"
+                Content="Výška: "
+                FontSize="15" />
+            <Label
+                x:Name="LabelHeight"
+                Width="30"
+                VerticalAlignment="Center"
+                Content="{Binding ElementName=SliderHeight, Path=Value}"
+                FontSize="15" />
+            <Slider
+                x:Name="SliderHeight"
+                Width="250"
+                VerticalAlignment="Center"
+                IsSnapToTickEnabled="True"
+                Maximum="25"
+                Minimum="4"
+                TickFrequency="1"
+                Value="5" />
         </StackPanel>
 
         <Grid>
@@ -36,13 +78,12 @@
             <Canvas
                 x:Name="myCanvas"
                 Grid.Row="0"
-                Height="800"
+                Height="830"
                 Background="LightBlue" />
             <RichTextBox
                 x:Name="debugTextBox"
                 Grid.Row="1"
                 Visibility="Hidden" />
         </Grid>
-
     </StackPanel>
 </Window>

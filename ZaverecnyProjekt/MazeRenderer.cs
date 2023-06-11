@@ -14,6 +14,7 @@ namespace ZaverecnyProjekt
         {
             myCanvas = canvas; // Uložení odkazu na myCanvas do členské proměnné
         }
+        Stack<Coordinate> stack;
 
 
         /// <summary>
@@ -38,11 +39,13 @@ namespace ZaverecnyProjekt
             return true;
         }
 
-        public bool DrawPath(Stack<Coordinate> stack, RenderSettings settings)
+        public bool DrawPath(Direction[,] grid, Stack<Coordinate> stack, RenderSettings settings)
         {
+            settings.FillBackGround = true;
+            this.stack = stack;
+            //foreach(Coordinate e in stack){}
 
-            //stack.Peek();
-
+            
             return true;
         }
 
@@ -65,7 +68,7 @@ namespace ZaverecnyProjekt
             int xOffset = col * cellSize + settings.WallWidth / 2 + cellSize;
             int yOffset = row * cellSize + settings.WallWidth / 2 + cellSize;
 
-            if (settings.FillBackGround)
+            if (grid[row, col].HasFlag(Direction.VISITED))
                 drawSquare(xOffset, yOffset, cellSize, CellBrush);
 
             if (grid[row, col].HasFlag(Direction.N))
@@ -98,9 +101,9 @@ namespace ZaverecnyProjekt
             myCanvas.Children.Add(rect);
         }
 
+
         private void DrawLine(Point startPoint, Point endPoint, Color color, double thickness)
         {
-
             Line line = new Line
             {
                 Stroke = new SolidColorBrush(color),
@@ -110,7 +113,6 @@ namespace ZaverecnyProjekt
                 X2 = endPoint.X,
                 Y2 = endPoint.Y
             };
-
             myCanvas.Children.Add(line);
         }
     }

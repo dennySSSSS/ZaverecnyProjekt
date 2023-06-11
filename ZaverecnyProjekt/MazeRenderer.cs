@@ -54,7 +54,7 @@ namespace ZaverecnyProjekt
             int yOffset = row * cellSize + settings.WallWidth / 2 + cellSize;
 
             if (settings.FillBackGround)
-                drawSquare(xOffset, yOffset, cellSize, CellBrush);
+                DrawSquare(xOffset, yOffset, cellSize, CellBrush);
 
             if (grid[row, col].HasFlag(Direction.N))
                 DrawLine(new Point(xOffset, yOffset), new Point(xOffset + cellSize, yOffset), WallBrush.Color, wallWidth);
@@ -69,7 +69,7 @@ namespace ZaverecnyProjekt
                 DrawLine(new Point(xOffset, yOffset), new Point(xOffset, yOffset + cellSize), WallBrush.Color, wallWidth);
         }
 
-        private void drawSquare(int x, int y, int squareSize, Brush brush)
+        private void DrawSquare(int x, int y, int squareSize, Brush brush)
         {
             Rectangle rect = new Rectangle();
             TransformGroup transformGroup = new TransformGroup();

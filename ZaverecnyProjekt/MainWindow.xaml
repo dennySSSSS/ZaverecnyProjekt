@@ -3,14 +3,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:ZaverecnyProjekt"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Name="window"
     Title="MainWindow"
     Width="1000"
     Height="870"
-    mc:Ignorable="d"
-    ResizeMode="CanMinimize">
+    ResizeMode="CanMinimize"
+    mc:Ignorable="d">
     <StackPanel>
         <StackPanel
             x:Name="topStackPanel"
@@ -31,25 +30,6 @@
                 Content="Vygeneruj bludiště" />
             <Label
                 VerticalAlignment="Center"
-                Content="Šířka: "
-                FontSize="15" />
-            <Label
-                x:Name="LabelWidth"
-                Width="30"
-                VerticalAlignment="Center"
-                Content="{Binding ElementName=SliderWidth, Path=Value}"
-                FontSize="15" />
-            <Slider
-                x:Name="SliderWidth"
-                Width="250"
-                VerticalAlignment="Center"
-                IsSnapToTickEnabled="True"
-                Maximum="30"
-                Minimum="4"
-                TickFrequency="1"
-                Value="5" />
-            <Label
-                VerticalAlignment="Center"
                 Content="Výška: "
                 FontSize="15" />
             <Label
@@ -67,6 +47,26 @@
                 Minimum="4"
                 TickFrequency="1"
                 Value="5" />
+            <Label
+                VerticalAlignment="Center"
+                Content="Šířka: "
+                FontSize="15" />
+            <Label
+                x:Name="LabelWidth"
+                Width="30"
+                VerticalAlignment="Center"
+                Content="{Binding ElementName=SliderWidth, Path=Value}"
+                FontSize="15" />
+            <Slider
+                x:Name="SliderWidth"
+                Width="250"
+                VerticalAlignment="Center"
+                IsSnapToTickEnabled="True"
+                Maximum="30"
+                Minimum="4"
+                TickFrequency="1"
+                Value="5" />
+
         </StackPanel>
 
         <Grid>
